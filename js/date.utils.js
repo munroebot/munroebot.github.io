@@ -38,8 +38,8 @@ function buildLongDateFormatString(element) {
 
 function buildShortDateFormatString(element) {
     var dateElement = $(element).val().split("/");
-    dateElement = new Date(dateElement[2],dateElement[0]*1-1,dateElement[1]*1);
-    return dateElement;
+    dateElement = new Date(dateElement[2],dateElement[0],dateElement[1]);
+    return dateElement.getMonth() + "/" + dateElement.getDate() + "/" + dateElement.getYear();
 }
 
 function formatDate() {
