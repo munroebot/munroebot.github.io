@@ -14,6 +14,11 @@
 
 function init() {
 
+    var phoneArray = new Array();
+    phoneArray["Bally's Las Vegas"] = "1-800-522-4700";
+    phoneArray["Caesars Las Vegas"] = "1-800-522-4700";
+
+
     $('#template-start').bind('blur', formatDate);
     $('#template-end').bind('blur', formatDate);
     $('#group-arrival').bind('blur', formatDate);
