@@ -22,23 +22,23 @@
 
 function getDayOfTheWeek(date) {
     var weekDay = new Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday");
-    return weekDay[date.getDay()-1];
+    return weekDay[date.getDay()];
 }
 
 function getFullMonthName(date) {
     var monthName = new Array("January","February","March","April","May","June","July","August","September","October","November","December");
-    return monthName[date.getMonth()-1];
+    return monthName[date.getMonth()];
 }
 
 function buildLongDateFormatString(element) {
     var dateElement = $(element).val().split("/");
-    dateElement = new Date(dateElement[2]+1900,dateElement[0],dateElement[1]);
+    dateElement = new Date(dateElement[2],dateElement[0],dateElement[1]);
     return getDayOfTheWeek(dateElement) + " " + getFullMonthName(dateElement) + " " + dateElement.getDate() + ", " + dateElement.getFullYear()
 }
 
 function buildShortDateFormatString(element) {
     var dateElement = $(element).val().split("/");
-    dateElement = new Date(dateElement[2]+1900,dateElement[0],dateElement[1]);
+    dateElement = new Date(dateElement[2],dateElement[0],dateElement[1]);
     return dateElement.getMonth() + "/" + dateElement.getDate() + "/" + dateElement.getFullYear();
 }
 
