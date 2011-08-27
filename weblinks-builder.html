@@ -12,7 +12,10 @@
 
 <script type="text/javascript">
     
-    var phoneArray = new Array();
+
+function init() {
+
+    window.phoneArray = new Array();
     phoneArray["Bally's Las Vegas"] = "1-800-522-4700";
     phoneArray["Caesars Las Vegas"] = "1-866-227-5944";
     phoneArray["Rio All Suite Hotel & Casino"] = "1-888-746-6955";
@@ -21,8 +24,6 @@
     phoneArray["Harrah's Las Vegas"] = "1-888-458-8471";
     phoneArray["Imperial Palace Las Vegas"] = "1-866-523-2781";
     phoneArray["Planet Hollywood Las Vegas"] = "1=866-317-1829";
-
-function init() {
 
     for (var key in phoneArray) {
         $('#property-name').append('<option>' + key + '</option>');
