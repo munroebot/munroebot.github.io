@@ -31,8 +31,8 @@ function init() {
     window.typeArray = new Array();
     typeArray = ['Conference','Event','Group','Tradeshow','Association','Tournament','Convention','Meeting','Expo'];
 
-    for (var key in typeArray) {
-        $('#group-type').append('<option>' + key + '</option>');
+    for (key in typeArray) {
+        $('#group-type').append('<option>' + typeArray[key] + '</option>');
     }
 
     $('#template-start').bind('blur', formatDate);
