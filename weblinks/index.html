@@ -1,15 +1,229 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/    strict.dtd">
- 
-<html lang="en">  
-<head>
-<meta http-equiv="cache-control" content="NO-CACHE">
+<!doctype html>
+<html>
 
-<script src="js/jquery-1.6.2.min.js"></script>
+<head>
+<title>Reservation Builder</title>
+
+<link rel="stylesheet" type="text/css" href="css/main.css?1" />
+
+<script type="text/javascript" src="js/date.utils.js?21"></script>
+<script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="js/ZeroClipboard.js"></script>
+
 <script type="text/javascript">
-    ko = new Date();
-    $(document).ready( function() { 
-        window.location = "weblinks-builder.html?ts=" + ko.getTime(); 
-    });
+    
+
+function init() {
+
+    window.phoneArray = new Array();
+    phoneArray["Bally's Las Vegas"] = "1-800-522-4700";
+    phoneArray["Caesars Las Vegas"] = "1-866-227-5944";
+    phoneArray["Rio All Suite Hotel & Casino"] = "1-888-746-6955";
+    phoneArray["Flamingo Las Vegas"] = "1-888-373-9855";
+    phoneArray["Paris Las Vegas"] = "1-877-603-4389";
+    phoneArray["Harrah's Las Vegas"] = "1-888-458-8471";
+    phoneArray["Imperial Palace Las Vegas"] = "1-866-523-2781";
+    phoneArray["Planet Hollywood Las Vegas"] = "1=866-317-1829";
+
+    for (var key in phoneArray) {
+        $('#property-name').append('<option>' + key + '</option>');
+    }
+   
+    $('#template-start').bind('blur', formatDate);
+    $('#template-end').bind('blur', formatDate);
+    $('#group-arrival').bind('blur', formatDate);
+    $('#group-depart').bind('blur', formatDate);
+    $('#cutoff-date').bind('blur', formatDate);
+    $('#button1').bind('click', buildMessage);
+
+    $('#message').css('display','none');
+
+    ZeroClipboard.setMoviePath('js/ZeroClipboard.swf');
+    var clip = new ZeroClipboard.Client();
+    clip.setHandCursor(false);
+
+    clip.addEventListener( 'mouseDown', function(client) { 
+        clip.setText($("#text-output").val());
+        $("#message").fadeIn(1000, function() {
+            $("#message").fadeOut(5000);
+            return false;
+        } );
+    } );
+
+    clip.glue( 'clip_button' );
+}
+
+function buildMessage() {
+
+    var groupArrival = buildLongDateFormatString("#group-arrival");
+    var groupDepart = buildLongDateFormatString("#group-depart");
+    var cutoffDate = buildLongDateFormatString("#cutoff-date");
+    var templateStart = buildShortDateFormatString("#template-start");
+    var templateEnd = buildShortDateFormatString("#template-end");
+    
+    var msg = "";
+
+    msg += "== Group and Confirmation Message ==\n\n";
+    msg += "Welcome to the " + $("#group-name").val() + " " + $("#group-type").val() + " at the " + $("#property-name").val() + ".\n\n";
+    msg += groupArrival + " through " + groupDepart + ".\n\n";
+    msg += "Group room rates are based on hotel availability until " + cutoffDate + ".";
+    msg += "  A credit card is required at the time of booking and a deposit equal to one night's room and tax will be charged.";
+    msg += "  A " + $("#cxl-policy").val() + " cancellation notice is required";
+    msg += " prior to your arrival date to receive a refund on your deposit.\n\n";
+    msg += "== End Group and Confirmation Message ==\n\n";
+
+    msg += "Group Code: " + $("#group-code").val() + "\n";
+    msg += "Group Name: " + $("#group-name").val() + "\n";
+    msg += "Type: " + $("#group-type").val() + "\n";
+    msg += "Property: " + $("#property-name").val() + "\n";
+    msg += "Template Start: " + templateStart + "\n";
+    msg += "Template End: " + templateEnd + "\n";
+    msg += "Group Arrival: " + $("#group-arrival").val() + "\n";
+    msg += "Group Depart: " + $("#group-depart").val() + "\n";
+    msg += "Cut-off Date: " + $("#cutoff-date").val() + "\n";
+    msg += "Cxl Policy: " + $("#cxl-policy").val() + "\n";
+    msg += "Rates: " + $("#rates").val() + "\n";
+    msg += "Phone #: " + phoneArray[$("#property-name").val()] + "\n\n";
+
+    $("#text-output").val(msg);
+
+    return false;
+}
+
+$("document").ready( init );
+
 </script>
+
 </head>
+
+<body>
+
+<form name="form1" id="form1">
+<h2>Weblinks Message Generator</h2>
+
+<table name="field-layout" id="field-layout" class="field-layout">
+<tbody>
+
+<!-- Row 1 -->
+<tr>
+<th>Group Code:</th>
+<td>
+<input type="text" name="group-code" id="group-code" value="" />
+</td>
+</tr>
+
+<!-- Row 2 -->
+<tr>
+<th>Group Name:</th>
+<td>
+<input type="text" name="group-name" id="group-name" value="" />
+</td>
+</tr>
+
+<!-- Row 3 -->
+<tr>
+<th>Type:</th>
+<td>
+<select name="group-type" id="group-type">
+<option>--Please Select--</option>
+<option>Conference</option>
+<option>Event</option>
+<option>Group</option>
+<option>Tradeshow</option>
+<option>Association</option>
+<option>Tournament</option>
+<option>Convention</option>
+<option>Meeting</option>
+<option>Expo</option>
+<option>Conference</option>
+</select>
+</td>
+</tr>
+
+<!-- Row 4 -->
+<tr>
+<th>Property:</th>
+<td>
+<select name="property-name" id="property-name">
+<option>--Please Select--</option>
+</select>
+</td>
+</tr>
+
+<!-- Row 5 -->
+<tr>
+<th>Template Start:</th>
+<td>
+<input type="text" name="template-start" id="template-start" value="" />
+<span class="help">(mmddyy)</span>
+
+</td>
+</tr>
+
+<!-- Row 6 -->
+<tr>
+<th>Template End:</th>
+<td>
+<input type="text" name="template-end" id="template-end" value="" />
+<span class="help">(mmddyy)</span>
+</td>
+</tr>
+
+<!-- Row 7 -->
+<tr>
+<th>Group Arrival:</th>
+<td>
+<input type="text" name="group-arrival" id="group-arrival" value="" />
+<span class="help">(mmddyy)</span>
+</td>
+</tr>
+
+<!-- Row 8 -->
+<tr>
+<th>Group Depart:</th>
+<td>
+<input type="text" name="group-depart" id="group-depart" value="" />
+<span class="help">(mmddyy)</span>
+</td>
+</tr>
+
+<!-- Row 9 -->
+<tr>
+<th>Cut-off Date:</th>
+<td>
+<input type="text" name="cutoff-date" id="cutoff-date" value="" />
+<span class="help">(mmddyy)</span>
+</td>
+</tr>
+
+<!-- Row 10 -->
+<tr>
+<th>Cxl Policy:</th>
+<td>
+<input type="text" name="cxl-policy" id="cxl-policy" value="72 hour" />
+</td>
+</tr>
+
+<!-- Row 13 -->
+<tr>
+<th>Rates:</th>
+<td>
+<input type="text" name="rates" id="rates" value="" />
+</td>
+</tr>
+
+</tbody>
+</table>
+
+<input type="submit" name="button1" id="button1" class="button" value="Generate!" />
+<span id="clip_button"><input type="submit" name="button2" id="button2" class="button" value="Copy to Clipboard" /></span>
+<span id="message" class="message">copied...</span>
+<br/>
+<br/>
+
+<textarea name="text-output" id="text-output"></textarea>
+
+</form>
+</body>
+
 </html>
