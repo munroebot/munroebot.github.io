@@ -2,16 +2,15 @@
 <html>
 
 <head>
-<title>Reservation Builder</title>
+<title>Weblinks Message Builder</title>
 
-<link rel="stylesheet" type="text/css" href="css/main.css?1" />
+<link rel="stylesheet" type="text/css" href="css/main.css" />
 
-<script type="text/javascript" src="js/date.utils.js?21"></script>
+<script type="text/javascript" src="js/date.utils.js?1212"></script>
 <script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
 <script type="text/javascript" src="js/ZeroClipboard.js"></script>
 
 <script type="text/javascript">
-    
 
 function init() {
 
@@ -28,7 +27,14 @@ function init() {
     for (var key in phoneArray) {
         $('#property-name').append('<option>' + key + '</option>');
     }
-   
+    
+    window.typeArray = new Array();
+    typeArray = ['Conference','Event','Group','Tradeshow','Association','Tournament','Convention','Meeting','Expo'];
+
+    for (key in typeArray) {
+        $('#group-type').append('<option>' + typeArray[key] + '</option>');
+    }
+
     $('#template-start').bind('blur', formatDate);
     $('#template-end').bind('blur', formatDate);
     $('#group-arrival').bind('blur', formatDate);
@@ -58,8 +64,6 @@ function buildMessage() {
     var groupArrival = buildLongDateFormatString("#group-arrival");
     var groupDepart = buildLongDateFormatString("#group-depart");
     var cutoffDate = buildLongDateFormatString("#cutoff-date");
-    var templateStart = buildShortDateFormatString("#template-start");
-    var templateEnd = buildShortDateFormatString("#template-end");
     
     var msg = "";
 
@@ -76,8 +80,8 @@ function buildMessage() {
     msg += "Group Name: " + $("#group-name").val() + "\n";
     msg += "Type: " + $("#group-type").val() + "\n";
     msg += "Property: " + $("#property-name").val() + "\n";
-    msg += "Template Start: " + templateStart + "\n";
-    msg += "Template End: " + templateEnd + "\n";
+    msg += "Template Start: " + $("#template-start").val() + "\n";
+    msg += "Template End: " + $("#template-end").val() + "\n";
     msg += "Group Arrival: " + $("#group-arrival").val() + "\n";
     msg += "Group Depart: " + $("#group-depart").val() + "\n";
     msg += "Cut-off Date: " + $("#cutoff-date").val() + "\n";
@@ -126,17 +130,7 @@ $("document").ready( init );
 <td>
 <select name="group-type" id="group-type">
 <option>--Please Select--</option>
-<option>Conference</option>
-<option>Event</option>
-<option>Group</option>
-<option>Tradeshow</option>
-<option>Association</option>
-<option>Tournament</option>
-<option>Convention</option>
-<option>Meeting</option>
-<option>Expo</option>
-<option>Conference</option>
-</select>
+/select>
 </td>
 </tr>
 
