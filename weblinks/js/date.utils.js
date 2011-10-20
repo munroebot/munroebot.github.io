@@ -27,7 +27,7 @@ function getDayOfTheWeek(date) {
 
 function getFullMonthName(date) {
     var monthName = new Array("January","February","March","April","May","June","July","August","September","October","November","December");
-    return monthName[date.getMonth() + 1];
+    return monthName[date.getMonth() - 1];
 }
 
 function buildLongDateFormatString(element) {
