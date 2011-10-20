@@ -69,8 +69,6 @@ function buildMessage() {
 
     msg += "== Group and Confirmation Message ==\n\n";
     msg += $("#property-name").val() + " proudly welcomes the " + $("#group-name").val() + " " + $("#group-type").val() + ".\n\n";
-    // msg += "Welcome to the " + $("#group-name").val() + " " + $("#group-type").val() + " at the " + $("#property-name").val() + ".\n\n";
-    // msg += groupArrival + " through " + groupDepart + ".\n\n";
     msg += "Group room rates are based on hotel availability until " + cutoffDate + ".";
     msg += "  A credit card is required at the time of booking and a deposit equal to one night's room and tax will be charged.";
     msg += "  A " + $("#cxl-policy").val() + " cancellation notice is required";
@@ -81,8 +79,8 @@ function buildMessage() {
     msg += "Group Name: " + $("#group-name").val() + "\n";
     msg += "Type: " + $("#group-type").val() + "\n";
     msg += "Property: " + $("#property-name").val() + "\n";
-    msg += "Template Start: " + templateStart + "\n";
-    msg += "Template End: " + templateEnd + "\n";
+    msg += "Template Start: " + $("#template-start").val() + "\n";
+    msg += "Template End: " + $("#template-end").val() + "\n";
     msg += "Group Arrival: " + $("#group-arrival").val() + "\n";
     msg += "Group Depart: " + $("#group-depart").val() + "\n";
     msg += "Cut-off Date: " + $("#cutoff-date").val() + "\n";
