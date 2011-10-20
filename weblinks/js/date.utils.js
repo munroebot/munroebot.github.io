@@ -33,7 +33,7 @@ function getFullMonthName(date) {
 function buildLongDateFormatString(element) {
     var dateElement = $(element).val().split("/");
     dateElement = new Date(dateElement[2],dateElement[0],dateElement[1]);
-    return getDayOfTheWeek(dateElement) + " " + getFullMonthName(dateElement) + " " + dateElement.getDate() + ", " + dateElement.getFullYear()
+    return getDayOfTheWeek(dateElement) + " " + getFullMonthName(dateElement + 1) + " " + dateElement.getDate() + ", " + dateElement.getFullYear()
 }
 
 function buildShortDateFormatString(element) {
