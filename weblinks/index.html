@@ -27,7 +27,14 @@ function init() {
     for (var key in phoneArray) {
         $('#property-name').append('<option>' + key + '</option>');
     }
-   
+
+    window.typeArray = new Array();
+    typeArray = ['Conference','Event','Group','Tradeshow','Association','Tournament','Convention','Meeting','Expo','Show'];
+
+    for (key in typeArray) {
+        $('#group-type').append('<option>' + typeArray[key] + '</option>');
+    }
+
     $('#template-start').bind('blur', formatDate);
     $('#template-end').bind('blur', formatDate);
     $('#group-arrival').bind('blur', formatDate);
@@ -126,16 +133,6 @@ $("document").ready( init );
 <td>
 <select name="group-type" id="group-type">
 <option>--Please Select--</option>
-<option>Conference</option>
-<option>Event</option>
-<option>Group</option>
-<option>Tradeshow</option>
-<option>Association</option>
-<option>Tournament</option>
-<option>Convention</option>
-<option>Meeting</option>
-<option>Expo</option>
-<option>Conference</option>
 </select>
 </td>
 </tr>
