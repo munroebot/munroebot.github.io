@@ -64,8 +64,9 @@ function buildMessage() {
     var msg = "";
 
     msg += "== Group and Confirmation Message ==\n\n";
-    msg += "Welcome to the " + $("#group-name").val() + " " + $("#group-type").val() + " at the " + $("#property-name").val() + ".\n\n";
-    msg += groupArrival + " through " + groupDepart + ".\n\n";
+    msg += "$("#property-name").val() proudly welcomes the $("#group-name").val().\n\n";
+    // msg += "Welcome to the " + $("#group-name").val() + " " + $("#group-type").val() + " at the " + $("#property-name").val() + ".\n\n";
+    // msg += groupArrival + " through " + groupDepart + ".\n\n";
     msg += "Group room rates are based on hotel availability until " + cutoffDate + ".";
     msg += "  A credit card is required at the time of booking and a deposit equal to one night's room and tax will be charged.";
     msg += "  A " + $("#cxl-policy").val() + " cancellation notice is required";
