@@ -15,21 +15,25 @@
 function init() {
 
     window.phoneArray = new Array();
-    phoneArray["Bally's Las Vegas"] = "1-800-522-4700";
-    phoneArray["Caesars Las Vegas"] = "1-866-227-5944";
-    phoneArray["Rio All Suite Hotel & Casino"] = "1-888-746-6955";
-    phoneArray["Flamingo Las Vegas"] = "1-888-373-9855";
-    phoneArray["Paris Las Vegas"] = "1-877-603-4389";
-    phoneArray["Harrah's Las Vegas"] = "1-888-458-8471";
-    phoneArray["Imperial Palace Las Vegas"] = "1-866-523-2781";
-    phoneArray["Planet Hollywood Las Vegas"] = "1=866-317-1829";
+    phoneArray["Bally's Las Vegas"] = "(800) 522-4700";
+    phoneArray["Caesars Las Vegas"] = "(866) 227-5944";
+    phoneArray["Rio All Suite Hotel & Casino"] = "(888) 746-6955";
+    phoneArray["Flamingo Las Vegas"] = "(888) 373-9855";
+    phoneArray["Paris Las Vegas"] = "(877) 603-4389";
+    phoneArray["Harrah's Las Vegas"] = "(888) 458-8471";
+    phoneArray["The Linq Las Vegas"] = "(866) 523-2781";
+    phoneArray["Planet Hollywood Las Vegas"] = "(866) 317-1829";
+    phoneArray["The Cromwell Las Vegas"] = "(866) 574-3841";
+    phoneArray["Bally’s Atlantic City"] = "(888) 516-2215";
+    phoneArray["Harrah's Atlantic City"] = "(866) 317-1829";
 
+    
     for (var key in phoneArray) {
         $('#property-name').append('<option>' + key + '</option>');
     }
 
     window.typeArray = new Array();
-    typeArray = ['Conference','Event','Group','Tradeshow','Association','Tournament','Convention','Meeting','Expo','Show'];
+    typeArray = ['Conference','Event','Group','Tradeshow','Association','Tournament','Convention','Meeting','Expo','Show','Wedding','Reunion'];
 
     for (key in typeArray) {
         $('#group-type').append('<option>' + typeArray[key] + '</option>');
@@ -48,7 +52,7 @@ function init() {
     var clip = new ZeroClipboard.Client();
     clip.setHandCursor(false);
 
-    clip.addEventListener( 'mouseDown', function(client) { 
+    clip.addEventListener( 'mouseDown', function(client) {
         clip.setText($("#text-output").val());
         $("#message").fadeIn(1000, function() {
             $("#message").fadeOut(5000);
@@ -65,28 +69,19 @@ function buildMessage() {
     var groupDepart = buildLongDateFormatString("#group-depart");
     var cutoffDate = buildLongDateFormatString("#cutoff-date");
 
-    var msg = "";
+    var lv_msg = "";
 
-    msg += "== Group and Confirmation Message ==\n\n";
-    msg += $("#property-name").val() + " proudly welcomes the " + $("#group-name").val() + " " + $("#group-type").val() + ".\n\n";
-    msg += "Group room rates are based on hotel availability until " + cutoffDate + ".";
-    msg += "  A credit card is required at the time of booking and a deposit equal to one night's room and tax will be charged.";
-    msg += "  A " + $("#cxl-policy").val() + " cancellation notice is required";
-    msg += " prior to your arrival date to receive a refund on your deposit.\n\n";
-    msg += "== End Group and Confirmation Message ==\n\n";
+    lv_msg += "== Group and Confirmation Message ==\n\n";
+    lv_msg += $("#property-name").val() + " proudly welcomes the " + $("#group-name").val() + " " + $("#group-type").val() + ".\n\n";
+    lv_msg += "Group room rates are based on hotel availability until " + cutoffDate + ".";
+    lv_msg += "  A credit card is required at the time of booking and a deposit equal to one night's room and tax will be charged.";
+    lv_msg += "  A " + $("#cxl-policy").val() + " cancellation notice is required";
+    lv_msg += " prior to your arrival date to receive a refund on your deposit.\n\n";
+    lv_msg += "== End Group and Confirmation Message ==\n\n";
 
-    msg += "Group Code: " + $("#group-code").val() + "\n";
-    msg += "Group Name: " + $("#group-name").val() + "\n";
-    msg += "Type: " + $("#group-type").val() + "\n";
-    msg += "Property: " + $("#property-name").val() + "\n";
-    msg += "Template Start: " + $("#template-start").val() + "\n";
-    msg += "Template End: " + $("#template-end").val() + "\n";
-    msg += "Group Arrival: " + $("#group-arrival").val() + "\n";
-    msg += "Group Depart: " + $("#group-depart").val() + "\n";
-    msg += "Cut-off Date: " + $("#cutoff-date").val() + "\n";
-    msg += "Cxl Policy: " + $("#cxl-policy").val() + "\n";
-    msg += "Rates: " + $("#rates").val() + "\n";
-    msg += "Phone #: " + phoneArray[$("#property-name").val()] + "\n\n";
+    if (1==1) {
+      msg = lv_msg;
+    }
 
     $("#text-output").val(msg);
 
