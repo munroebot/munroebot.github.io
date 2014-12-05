@@ -27,12 +27,12 @@ function getDayOfTheWeek(date) {
 
 function getFullMonthName(date) {
     var monthName = new Array("January","February","March","April","May","June","July","August","September","October","November","December");
-    alert(date.getMonth());
     return monthName[date.getMonth() - 1];
 }
 
 function buildLongDateFormatString(element) {
     var dateElement = $(element).val().split("/");
+    alert(dateElement);
     dateElement = new Date(dateElement[2],dateElement[0],dateElement[1]);
     return getDayOfTheWeek(dateElement) + " " + getFullMonthName(dateElement) + " " + dateElement.getDate() + ", " + dateElement.getFullYear()
 }
