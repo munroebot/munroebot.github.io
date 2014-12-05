@@ -67,14 +67,12 @@ function init() {
 
 function setCxlPolicy() {
 
-// 48 in ac, 72 in LV
-
-    var lv_cxl_policy = "48 hrs";
-    var ac_cxl_policy = "72 hrs";
+    var lv_cxl_policy = "48";
+    var ac_cxl_policy = "72";
 
     var property = $("#property-name").val();
     var is_ac = property.match("Atlantic City")
-    
+
     if (is_ac) {
       $("#cxl-policy").val(ac_cxl_policy);
     }   else {
@@ -96,7 +94,7 @@ function buildMessage() {
     lv_msg += $("#property-name").val() + " proudly welcomes the " + $("#group-name").val() + " " + $("#group-type").val() + ".\n\n";
     lv_msg += "Group room rates are based on hotel availability until " + cutoffDate + ".";
     lv_msg += "  A credit card is required at the time of booking and a deposit equal to one night's room and tax will be charged.";
-    lv_msg += "  A " + $("#cxl-policy").val() + " cancellation notice is required";
+    lv_msg += "  A " + $("#cxl-policy").val() + " hr cancellation notice is required";
     lv_msg += " prior to your arrival date to receive a refund on your deposit.\n\n";
     lv_msg += "== End Group and Confirmation Message ==\n\n";
 
@@ -106,7 +104,7 @@ function buildMessage() {
     ac_msg += $("#property-name").val() + " is pleased to welcome the " + $("#group-name").val() + " " + $("#group-type").val() + ".\n\n";
     ac_msg += "Group room rates for the night(s) of " + groupArrival + " through " + groupDepart + " are based upon hotel availability until " + cutoffDate +".";
     ac_msg += "There is a 14% sales tax plus a $10 tourism fee per night. Rates are based on single or double occupancy and an additional per person charge of $20 will apply.  ";
-    ac_msg += "A credit card is required at the time of booking. Cancellations less than " + $("#cxl-policy").val() + " prior to arrival will be subject to a forfeit of one ";
+    ac_msg += "A credit card is required at the time of booking. Cancellations less than " + $("#cxl-policy").val() + " hrs prior to arrival will be subject to a forfeit of one ";
     ac_msg += "night's room charge. Please contact " + window.phoneArray[$("#property-name").val()];
     ac_msg += " if you require assistance or need to make changes to your reservation and be sure to reference group code " + $("#group-code").val() + "."
     ac_msg += "\n\n== End Group and Confirmation Message ==\n\n";
