@@ -27,6 +27,7 @@ function getDayOfTheWeek(date) {
 
 function getFullMonthName(date) {
     var monthName = new Array("January","February","March","April","May","June","July","August","September","October","November","December");
+    alert(data.getMonth());
     return monthName[date.getMonth() - 1];
 }
 
