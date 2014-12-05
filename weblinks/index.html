@@ -75,10 +75,10 @@ function setCxlPolicy() {
     var property = $("#property-name").val();
     var is_ac = property.match("Atlantic City")
 
-    if ( is_ac.length == 0 ) {
-      $("#property-name").val(lv_cxl_policy);
-    }   else {
+    if (is_ac) {
       $("#property-name").val(ac_cxl_policy);
+    }   else {
+      $("#property-name").val(lv_cxl_policy);
     }
 
     return false;
@@ -114,10 +114,10 @@ function buildMessage() {
     var property = $("#property-name").val();
     var is_ac = property.match("Atlantic City")
 
-    if ( is_ac.length == 0 ) {
-      msg = lv_msg;
-    } else {
+    if ( is_ac ) {
       msg = ac_msg;
+    } else {
+      msg = lv_msg;
     }
 
     $("#text-output").val(msg);
