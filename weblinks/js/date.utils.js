@@ -38,7 +38,7 @@ function buildLongDateFormatString(element) {
 
 function buildShortDateFormatString(element) {
     var dateElement = $(element).val().split("/");
-    dateElement = new Date(dateElement[2],dateElement[1],dateElement[0]);
+    dateElement = new Date(dateElement[2],dateElement[0]-1,dateElement[1]);
     return dateElement.getMonth() + "/" + dateElement.getDate() + "/" + dateElement.getFullYear();
 }
 
