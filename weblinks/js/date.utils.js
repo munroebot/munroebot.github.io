@@ -66,7 +66,7 @@ function formatDate() {
 
         // 12404
         if (parseInt(dateVal.substr(0,1)) == 1) {
-            retVal = dateVal.substr(0,2) + "/" + dateVal.substr(2,1) + "/" + "20" + dateVal.substr(3,2);
+            retVal = dateVal.substr(0,2) + "/0" + dateVal.substr(2,1) + "/" + "20" + dateVal.substr(3,2);
         }
 
         // 41204
@@ -123,17 +123,15 @@ function formatDate() {
 
 function formatTime(event) {
 	var element = event.element();
-	
+
 	var sTime = element.value
-	
+
 	if (sTime.length == 3) {
 		element.value = "0" + sTime.substring(0,1) + ":" + sTime.substring(1,2) + sTime.substring(2,3);
-		
+
 	}
 
 	if (sTime.length == 4) {
 		element.value = sTime.substring(0,1) + sTime.substring(1,2) + ":" + sTime.substring(2,3) + sTime.substring(3,4);
-	}	
+	}
 }
-
-
