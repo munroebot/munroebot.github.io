@@ -66,7 +66,7 @@ function formatDate() {
 
         // 12404
         if (parseInt(dateVal.substr(0,1)) == 1) {
-            retVal = dateVal.substr(0,2) + "/0" + dateVal.substr(2,1) + "/" + "20" + dateVal.substr(3,2);
+            retVal = dateVal.substr(0,2) + "/" + dateVal.substr(2,1) + "/" + "20" + dateVal.substr(3,2);
         }
 
         // 41204
