@@ -78,9 +78,9 @@ function setCxlPolicy() {
     alert(is_ac);
 
     if (is_ac) {
-      $("#property-name").val(ac_cxl_policy);
+      $("#cxl-policy").val(ac_cxl_policy);
     }   else {
-      $("#property-name").val(lv_cxl_policy);
+      $("#cxl-policy").val(lv_cxl_policy);
     }
 
     return false;
@@ -208,7 +208,7 @@ $("document").ready( init );
 <tr>
 <th>Cxl Policy:</th>
 <td>
-<!-- <input type="text" name="cxl-policy" id="cxl-policy" value="72 hour" /> -->
+<input type="hidden" name="cxl-policy" id="cxl-policy" value="72 hour" />
 Will be set to 48 hrs for Atlantic City, 72 hrs for Las Vegas.
 </td>
 </tr>
