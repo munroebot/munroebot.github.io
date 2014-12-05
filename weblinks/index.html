@@ -79,6 +79,8 @@ function buildMessage() {
     lv_msg += " prior to your arrival date to receive a refund on your deposit.\n\n";
     lv_msg += "== End Group and Confirmation Message ==\n\n";
 
+    var ac_msg = "";
+    
     ac_msg += "== Group and Confirmation Message Atlantic City==\n\n";
     ac_msg += $("#property-name").val() + " is pleased to welcome the " + $("#group-name").val() + " " + $("#group-type").val() + ".\n\n";
     ac_msg += "Group room rates for the night(s) of " + groupArrival + " through " + groupDepart + " are based upon hotel availability until " + cutoffDate +".";
@@ -91,7 +93,7 @@ function buildMessage() {
 // window.phoneArray[$("#property-name").val()] +
 
     msg = ac_msg;
-    
+
     $("#text-output").val(msg);
 
     return false;
