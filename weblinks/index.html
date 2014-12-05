@@ -44,7 +44,7 @@ function init() {
     $('#group-arrival').bind('blur', formatDate);
     $('#group-depart').bind('blur', formatDate);
     $('#cutoff-date').bind('blur', formatDate);
-    ${'#property-name'}.bind('blur', setCxlPolicy);
+    ${'#property-name').bind('blur', setCxlPolicy);
 
     $('#button1').bind('click', buildMessage);
 
@@ -66,6 +66,9 @@ function init() {
 }
 
 function setCxlPolicy() {
+
+// 48 in ac, 72 in LV
+
     var property = $("#property-name").val();
     var is_ac = property.match("Atlantic City")
 
@@ -126,10 +129,6 @@ $("document").ready( init );
 </head>
 
 <body>
-
-
-  <!-- 48 in ac, 72 in LV -->
-
 
 <form name="form1" id="form1">
 <h2>Weblinks Message Generator</h2>
