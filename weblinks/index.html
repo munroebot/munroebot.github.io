@@ -44,6 +44,8 @@ function init() {
     $('#group-arrival').bind('blur', formatDate);
     $('#group-depart').bind('blur', formatDate);
     $('#cutoff-date').bind('blur', formatDate);
+    ${'#property-name'}.bind('blur', setCxlPolicy);
+
     $('#button1').bind('click', buildMessage);
 
     $('#message').css('display','none');
@@ -63,6 +65,19 @@ function init() {
     clip.glue( 'clip_button' );
 }
 
+function setCxlPolicy() {
+    var property = $("#property-name").val();
+    var is_ac = property.match("Atlantic City")
+
+    if ( is_ac.length == 0 ) {
+      alert("hi")
+    }   else {
+      alert("boo");
+    }
+
+    return false;
+}
+
 function buildMessage() {
 
     var groupArrival = buildLongDateFormatString("#group-arrival");
@@ -80,19 +95,24 @@ function buildMessage() {
     lv_msg += "== End Group and Confirmation Message ==\n\n";
 
     var ac_msg = "";
-    
+
     ac_msg += "== Group and Confirmation Message Atlantic City==\n\n";
     ac_msg += $("#property-name").val() + " is pleased to welcome the " + $("#group-name").val() + " " + $("#group-type").val() + ".\n\n";
     ac_msg += "Group room rates for the night(s) of " + groupArrival + " through " + groupDepart + " are based upon hotel availability until " + cutoffDate +".";
-    ac_msg += "There is a 14% sales tax plus a $10 tourism fee per night. Rates are based on single or double occupancy and an additional per person charge of $20 will apply.";
+    ac_msg += "There is a 14% sales tax plus a $10 tourism fee per night. Rates are based on single or double occupancy and an additional per person charge of $20 will apply.  ";
     ac_msg += "A credit card is required at the time of booking. Cancellations less than " + $("#cxl-policy").val() + " prior to arrival will be subject to a forfeit of one ";
-    ac_msg += "night's room charge. Please contact ";
+    ac_msg += "night's room charge. Please contact " + window.phoneArray[$("#property-name").val()];
     ac_msg += " if you require assistance or need to make changes to your reservation and be sure to reference group code " + $("#group-code").val() + "."
-    ac_msg += "== End Group and Confirmation Message ==\n\n";
+    ac_msg += "\n\n== End Group and Confirmation Message ==\n\n";
 
-// window.phoneArray[$("#property-name").val()] +
+    var property = $("#property-name").val();
+    var is_ac = property.match("Atlantic City")
 
-    msg = ac_msg;
+    if ( is_ac.length == 0 ) {
+      msg = lv_msg;
+    } else {
+      msg = ac_msg;
+    }
 
     $("#text-output").val(msg);
 
