@@ -15,7 +15,7 @@
 function init() {
 
     window.phoneArray = new Array();
-    
+
     phoneArray["Bally's Las Vegas"] = "(800) 358-8777";
     phoneArray["Caesars Palace"] = "(866) 227-5944";
     phoneArray["The Cromwell"] = "(866) 574-3841";
@@ -73,14 +73,20 @@ function setCxlPolicy() {
 
     var lv_cxl_policy = "72";
     var ac_cxl_policy = "48";
+    var lv_resort_fee = "$25";
 
     var property = $("#property-name").val();
-    var is_ac = property.match("Atlantic City")
+    var is_ac = property.match("Atlantic City");
+    var is_29_resort_fee = (property.match("Caesars Palace") || property.match("Cromwell") || property.match("Hollywood"));
 
     if (is_ac) {
       $("#cxl-policy").val(ac_cxl_policy);
     }   else {
       $("#cxl-policy").val(lv_cxl_policy);
+    }
+
+    if (is_29_resort_fee) {
+      lv_resort_fee = "$29";
     }
 
     return false;
@@ -100,7 +106,7 @@ function buildMessage() {
     lv_msg += "  A credit card is required at the time of booking and a deposit equal to one night's room and tax will be charged.";
     lv_msg += "  A " + $("#cxl-policy").val() + " hr cancellation notice is required";
     lv_msg += " prior to your arrival date to receive a refund on your deposit.\n\n";
-    lv_msg += "Please Note: Room rate quoted is in addition to a nightly Resort Fee of $25 plus tax.\n\n"
+    lv_msg += "Please Note: Room rate quoted is in addition to a nightly Resort Fee of " + lv_resort_fee + " plus tax.\n\n"
     lv_msg += "== End Group and Confirmation Message ==\n\n";
     lv_msg += "Property Telephone #: " + window.phoneArray[$("#property-name").val()]; "\n\n";
 
