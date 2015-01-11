@@ -93,6 +93,7 @@ function buildMessage() {
     var cutoffDate = buildLongDateFormatString("#cutoff-date");
 
     var lv_resort_fee = "$25";
+    var property = $("#property-name").val();
     var is_29_resort_fee = (property.match("Caesars Palace") || property.match("Cromwell") || property.match("Hollywood"));
 
     if (is_29_resort_fee) {
