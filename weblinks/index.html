@@ -120,7 +120,7 @@ function buildMessage() {
     ac_msg += "Group room rates for the nights of " + groupArrival + " through " + groupDepart + " are based upon hotel availability until " + cutoffDate +".";
     ac_msg += "  There is a 14% sales tax plus a $5 tourism fee per night.  Rates are based on single or double occupancy and an additional per person charge of $20 will apply.  ";
     ac_msg += "A credit card is required at the time of booking.  Cancellations less than " + $("#cxl-policy").val() + " hrs prior to arrival will be subject to a forfeit of one ";
-    ac_msg += "night's room charge.  Please contact " + window.phoneArray[$("#property-name").val()]; + " ";
+    ac_msg += "night's room charge.  Please contact " + window.phoneArray[$("#property-name").val()] + " ";
     ac_msg += "if you require assistance or need to make changes to your reservation and be sure to reference group code " + $("#group-code").val() + ".\n\n";
     ac_msg += "Please Note: Room rate quoted is in addition to a nightly Resort Fee of " + ac_resort_fee + " plus tax.";
     ac_msg += "\n\n== End Group and Confirmation Message ==\n\n";
