@@ -92,13 +92,13 @@ function buildMessage() {
     var groupDepart = buildLongDateFormatString("#group-depart");
     var cutoffDate = buildLongDateFormatString("#cutoff-date");
 
-    var lv_resort_fee = "$29";
-    var ac_resort_fee = "$20";
+    var lv_resort_fee = "$30";
+    var ac_resort_fee = "$23.71";
     var property = $("#property-name").val();
-    var is_32_resort_fee = (property.match("Caesars Palace") || property.match("Cromwell") || property.match("Paris") || property.match("Hollywood"));
+    var is_35_resort_fee = (property.match("Caesars Palace") || property.match("Cromwell") || property.match("Paris") || property.match("Hollywood"));
 
-    if (is_32_resort_fee) {
-        lv_resort_fee = "$32";
+    if (is_35_resort_fee) {
+        lv_resort_fee = "$35";
     }
 
     var lv_msg = "";
@@ -118,9 +118,9 @@ function buildMessage() {
     ac_msg += "== Begin Group and Confirmation Message Atlantic City ==\n\n";
     ac_msg += $("#property-name").val() + " is pleased to welcome the " + $("#group-name").val() + " " + $("#group-type").val() + ".\n\n";
     ac_msg += "Group room rates for the nights of " + groupArrival + " through " + groupDepart + " are based upon hotel availability until " + cutoffDate +".";
-    ac_msg += "  There is a 14% sales tax plus a $5 tourism fee per night.  Rates are based on single or double occupancy and an additional per person charge of $20 will apply.  ";
+    ac_msg += "  There is a 13.875% hotel tax plus a $5 tourism fee per night.  Rates are based on single or double occupancy and an additional per person charge of $20 will apply.  ";
     ac_msg += "A credit card is required at the time of booking and a deposit equal to one night's room and tax will be charged. ";
-    ac_msg += "Cancellations less than " + $("#cxl-policy").val() + " hrs prior to arrival will be subject to a forfeit of one ";
+    ac_msg += "Cancellations less than " + $("#cxl-policy").val() + " hours prior to arrival will be subject to a forfeit of one ";
     ac_msg += "night's room charge.  Please contact " + window.phoneArray[$("#property-name").val()] + " ";
     ac_msg += "if you require assistance or need to make changes to your reservation and be sure to reference group code " + $("#group-code").val() + ".\n\n";
     ac_msg += "Please Note: Room rate quoted is in addition to a nightly Resort Fee of " + ac_resort_fee + " plus tax.";
@@ -223,7 +223,7 @@ $("document").ready( init );
 <th>Cxl Policy:</th>
 <td>
 <input type="hidden" name="cxl-policy" id="cxl-policy" value="72 hour" />
-Will be set to 48 hrs for Atlantic City, 72 hrs for Las Vegas.
+Will be set to 48 hours for Atlantic City, 72 hours for Las Vegas.
 </td>
 </tr>
 
