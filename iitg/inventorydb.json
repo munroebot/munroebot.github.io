@@ -1,0 +1,14 @@
+{
+    "inventory": {
+        "c1": [
+            "lights",
+            "camera",
+            "cords"
+        ],
+        "c2": [
+            "chairs",
+            "stove",
+            "blankets"
+        ]
+    }
+}
