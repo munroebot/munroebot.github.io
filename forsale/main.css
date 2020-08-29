@@ -13,8 +13,10 @@ h2 {
 }
 
 image {
-    size: 800 600;
+    max-width: 100%;
+    height: auto;
 }
+
 select, textarea {
     background-color: #fcfcfc;
     border: 1px solid #ccc;
