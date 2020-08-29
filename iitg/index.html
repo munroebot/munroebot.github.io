@@ -1,7 +1,50 @@
 <html>
-    <script type="text/javascript" src="inventorydb.json"></script>
+    <head>
+        <title>Container Inventory</title>
+        <script src="inventorydb.js"></script>
+
+        <script type="text/javascript">
+
+            function init(attribute) {
+                const queryString = window.location.search;
+                const urlParams = new URLSearchParams(queryString);
+                const containerId = urlParams.get('c');
+
+                x = db.inventory[containerId]["contents_description"];
+                document.getElementById("container_description").innerHTML = x
+
+                x = db.inventory[containerId]["contents"];
+                document.getElementById("container_contents").innerHTML = x
+
+                x = db.inventory[containerId]["image_url"];
+                document.getElementById("container_photo").src = x
+
+            }
     
+            document.onreadystatechange = function () {
+                if (document.readyState === 'complete') {
+                    init();
+                }
+            }
+        </script>
+    
+    </head>
     <body>
-        Hello, world
+        <h3>Container Inventory:</h3>
+        <table style="width:100%">
+            <tr>
+              <th>Contents Description:</th>
+              <td id="container_description"></td>
+            </tr>
+            <tr>
+              <th>Physical Contents:</th>
+              <td id="container_contents"></td>
+            </tr>
+            <tr>
+              <th>Photo:</th>
+              <td><img id="container_photo" src=""/></td>
+            </tr>
+          </table>
+
     </body>
 </html>
