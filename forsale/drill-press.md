@@ -1,4 +1,4 @@
-## SKIL 10" Bench Top Drill Press
+## SKIL 3320 10" Bench Top Drill Press
 
 1/2" keyed chuck
 5 Speeds - 570 - 3,050 RPM
